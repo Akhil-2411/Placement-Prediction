@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - HOST=0.0.0.0
+      - MODEL_PATH=/app/models/placement_model_balanced.joblib
+      - SUPABASE_URL=${SUPABASE_URL:-https://lcrfmpppwfsxccfbvnqy.supabase.co}
+      - SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY:-sb_publishable_jlA2LMbgNvyMs6EDdgHraw_YnWhmOWY}
+    volumes:
+      - ./backend:/app
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:8000/api/v1
+      - VITE_SUPABASE_URL=https://lcrfmpppwfsxccfbvnqy.supabase.co
+      - VITE_SUPABASE_ANON_KEY=sb_publishable_jlA2LMbgNvyMs6EDdgHraw_YnWhmOWY
+    depends_on:
+      - backend
+    restart: unless-stopped
