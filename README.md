@@ -160,9 +160,3 @@ $$P(\text{Placed}) = \frac{1}{1 + e^{-z}}, \quad \text{where } z = w_0 + \sum_{i
   `[cgpa, backlogs, coding_skills, dsa_score, aptitude_score, communication_skills, ml_knowledge, system_design, internships, projects_count, certifications, hackathons, open_source_contributions, extracurriculars, branch_CSE, branch_Chemical, branch_ECE, branch_EE, branch_IT, branch_ME, college_tier_Tier-2, college_tier_Tier-3]`
 - **Attribution Formulation:** Each feature's relative impact is evaluated as $\Delta z_i = w_i \cdot (x_i - \bar{x}_i)$, where $\bar{x}_i$ is the population baseline mean from the 100,000 training observations.
 - **Scientific Ethics:** Factor contributions describe statistical associations in historical cohort data and avoid claiming direct causal determinism.
-
----
-
-## License & Attribution
-
-Built for campus placement readiness intelligence. Developed with Google Antigravity pair programming.
